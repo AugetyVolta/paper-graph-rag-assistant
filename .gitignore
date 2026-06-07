@@ -3,8 +3,9 @@
 # Local ICLR/OpenReview raw exports. These files can be very large.
 2026/
 
-# Generated indexes, caches, and runtime logs.
-data/
+# Keep the compact built index for deployment, but ignore runtime logs/caches.
+data/*
+!data/iclr2026_index.json
 __pycache__/
 *.pyc
 

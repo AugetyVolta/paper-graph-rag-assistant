@@ -259,7 +259,7 @@ Streamlit 页面展示
 ├── web/                     # 早期轻量 Web 前端资源
 ├── 2026/                    # ICLR 2026 原始数据目录，需要自行放置
 └── data/
-    └── iclr2026_index.json  # 构建后的本地索引，不建议提交到 Git
+    └── iclr2026_index.json  # 构建后的论文索引，仓库内保留用于云端复现
 ```
 
 ## 数据说明
@@ -301,9 +301,9 @@ index file: data/iclr2026_index.json
 
 注意：
 
-- 原始数据目录 `2026/` 通常较大，不建议提交到 GitHub。
-- 构建后的 `data/iclr2026_index.json` 也较大，本项目 `.gitignore` 默认忽略 `data/*.json`。
-- 其他人复现时需要自己准备同结构的 OpenReview 数据。
+- 原始数据目录 `2026/` 通常很大，尤其完整 `submissions.jsonl` 可能超过 1GB，不适合直接提交到 GitHub。
+- 仓库保留 `data/iclr2026_index.json`，这样其他人克隆后可以直接运行系统，不必重新处理原始 JSONL。
+- 如果需要重新构建索引，再把同结构的 OpenReview 数据放到 `2026/` 下运行 `build_index.py`。
 
 ## 环境安装
 
@@ -737,7 +737,6 @@ web/
 ```text
 .env
 2026/
-data/iclr2026_index.json
 data/*.log
 __pycache__/
 ```
@@ -746,17 +745,14 @@ __pycache__/
 
 ```text
 .env
-data/*.json
-data/*.log
+2026/
+data/*
+!data/iclr2026_index.json
 __pycache__/
 *.pyc
 ```
 
-如果要把原始数据也排除，可以额外加入：
-
-```text
-2026/
-```
+说明：仓库会保留 `data/iclr2026_index.json` 作为可部署索引；`.env`、原始数据和运行日志不会提交。
 
 ## 汇报建议
 
