@@ -1,0 +1,13 @@
+.env
+
+# Local ICLR/OpenReview raw exports. These files can be very large.
+2026/
+
+# Generated indexes, caches, and runtime logs.
+data/
+__pycache__/
+*.pyc
+
+# Local editor / OS noise.
+.DS_Store
+Thumbs.db

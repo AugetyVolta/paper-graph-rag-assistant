@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICLR 2026 Paper QA</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">AI</div>
+          <div>
+            <h1>ICLR 2026 论文问答</h1>
+            <p>RAG + 知识图谱演示</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div>
+            <span id="paperCount">--</span>
+            <label>论文</label>
+          </div>
+          <div>
+            <span id="reviewCount">--</span>
+            <label>含评审</label>
+          </div>
+        </div>
+
+        <label class="field-label" for="areaSelect">研究方向</label>
+        <select id="areaSelect">
+          <option value="">全部方向</option>
+        </select>
+
+        <label class="toggle-row">
+          <input id="llmToggle" type="checkbox">
+          <span>使用外部 LLM</span>
+        </label>
+
+        <div class="topic-list" id="topicList"></div>
+      </aside>
+
+      <main class="workspace">
+        <section class="query-bar">
+          <input id="questionInput" value="有哪些 ICLR 2026 论文关注大语言模型和检索增强生成？" aria-label="问题">
+          <button id="askButton" title="开始问答"><span>⌕</span> 提问</button>
+        </section>
+
+        <section class="content-grid">
+          <div class="answer-panel">
+            <div class="panel-head">
+              <h2>回答</h2>
+              <span id="answerMode">本地 RAG</span>
+            </div>
+            <div id="answerBox" class="answer-box"></div>
+          </div>
+
+          <div class="graph-panel">
+            <div class="panel-head">
+              <h2>知识图谱</h2>
+              <span id="graphCount">--</span>
+            </div>
+            <svg id="graphSvg" role="img" aria-label="论文知识图谱"></svg>
+          </div>
+        </section>
+
+        <section class="results-section">
+          <div class="panel-head">
+            <h2>证据论文</h2>
+            <span id="resultCount">--</span>
+          </div>
+          <div id="resultsList" class="results-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
